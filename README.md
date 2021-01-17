@@ -61,6 +61,7 @@ All steps are executed via `etl.py` . Be sure to see detailed instructions below
 
 ### Fact table:
 * Fact table `songplays` describes the facts about each "songplay" event and has the following schema. 
+This table is partitioned by year and month to make sure it remains fast as data grows over the years. 
 It can be used to analyze the listening trends of users, memebership upgrade patters as well as artist trends  
 ```
  |-- start_time: timestamp (nullable = true)
@@ -79,6 +80,7 @@ It can be used to analyze the listening trends of users, memebership upgrade pat
 
 ### Dimenstion tables: 
 * Dimension table `time` is your classic time dimension translating timestamp into day, month, year, week etc.
+This table is partitioned by year and month to make sure it remains fast as data grows over the years. 
 The table schema was prescribed in this project's specification and follows what was done in a redshift data warehouse.
 ```
  |-- start_time: timestamp (nullable = true)
@@ -102,7 +104,8 @@ The table schema was prescribed in this project's specification and follows what
 ```
 
 
-* Dimension table `songs` describes each song. Joining songs and artists tables to fact table will allow use to analyze 
+* Dimension table `songs` describes each song. Joining songs and artists tables to fact table will allow use to analyze.
+This table is partitioned by year and artist to make sure it remains fast as data grows over the years. 
 trends. The table schema was prescribed in this project's specification and follows what was done in a redshift data warehouse.
 ```
  |-- song_id: string (nullable = true)
