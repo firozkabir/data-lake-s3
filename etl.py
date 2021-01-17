@@ -164,6 +164,7 @@ def process_log_data(spark, input_data, output_data):
     time_table.write \
         .option("compression", "gzip") \
         .mode("overwrite") \
+        .partitionBy(["year", "month"]) \
         .parquet(output_data + '/time.parquet')
 
     print(f"{datetime.now()} - filtering dataframe for page='NextSong' before creating the fact table songplays ")
