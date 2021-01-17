@@ -136,6 +136,13 @@ git clone git@github.com:firozkabir/data-lake-s3.git
 ```
 
 
+* `etl.py` is the main program and should be execute as ./etl.py. 
+
+
+* `dl.cfg` contains AWS keys to access the S3 buckets as well as the S3 buckets to read from and write to
+
+
+
 * Update configuration
 ```
 [aws-keys]
